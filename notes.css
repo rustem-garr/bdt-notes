@@ -1,0 +1,367 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+    padding: 50px 40px;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.4em;
+    color: #666;
+}
+
+.progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.note-label {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.question-container {
+    margin-bottom: 30px;
+}
+
+.question-text {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-weight: 600;
+    padding: 15px;
+    background: #f8f9ff;
+    border-left: 5px solid #667eea;
+    border-radius: 8px;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 40px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    flex: 1;
+    min-width: 200px;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    flex: 1;
+    min-width: 150px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.answer-container {
+    display: none;
+    margin-top: 25px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.answer-container.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.answer-text {
+    font-size: 1.2em;
+    color: #2d3436;
+    line-height: 1.8;
+    padding: 25px;
+    background: linear-gradient(135deg, #d4f1d4 0%, #e8f4e8 100%);
+    border-left: 5px solid #27ae60;
+    border-radius: 8px;
+    border: 2px solid #27ae60;
+}
+
+.navigation {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #e0e0e0;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-nav {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-nav:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.stats {
+    font-size: 1.2em;
+    color: #667eea;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.5em;
+    color: #667eea;
+    padding: 40px;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 30px;
+    background: #fadbd8;
+    border-radius: 10px;
+    border-left: 5px solid #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .question-text {
+        font-size: 1.4em;
+    }
+
+    .answer-text {
+        font-size: 1.2em;
+    }
+
+    .btn {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+
+    .progress {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .progress-bar {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .navigation {
+        flex-direction: column;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-nav {
+        width: 100%;
+    }
+}
+
+.completion-message {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #d4f1d4 0%, #e8f4e8 100%);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.completion-message.show {
+    display: block;
+}
+
+.completion-message h2 {
+    color: #27ae60;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.completion-message p {
+    color: #333;
+    font-size: 1.2em;
+}
+
+.quick-nav {
+    margin-top: 40px;
+    padding: 30px;
+    background: #f8f9ff;
+    border-radius: 10px;
+    border: 2px solid #667eea;
+}
+
+.quick-nav h3 {
+    color: #667eea;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.quick-nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.quick-nav-item {
+    padding: 10px 15px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.quick-nav-item:hover {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .quick-nav-list {
+        grid-template-columns: 1fr;
+    }
+}
