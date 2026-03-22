@@ -192,8 +192,8 @@ body {
 
 .navigation {
     display: flex;
+    flex-direction: column;
     gap: 15px;
-    justify-content: space-between;
     margin-top: 40px;
     padding-top: 20px;
     border-top: 2px solid #e0e0e0;
@@ -202,6 +202,34 @@ body {
 .nav-buttons {
     display: flex;
     gap: 15px;
+    justify-content: center;
+}
+
+.jump-to {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.jump-to input {
+    padding: 8px 12px;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 120px;
+    text-align: center;
+}
+
+.jump-to input:focus {
+    outline: none;
+    border-color: #764ba2;
+}
+
+.stats {
+    text-align: center;
+    font-weight: bold;
+    color: #333;
 }
 
 .btn-nav {

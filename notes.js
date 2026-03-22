@@ -526,7 +526,195 @@ Q: Does Avro need schema at runtime?
 A: Yes — but it is embedded in file, so no external dependency.
 
 Q: Is Avro human-readable?
-A: No — binary format.`;
+A: No — binary format.
+
+---
+
+NOTE 6: Apache Pig
+
+Q: What is Apache Pig?
+A: A high-level data flow language built on top of MapReduce to simplify big data processing.
+
+Q: Who developed Apache Pig?
+A: Yahoo
+
+Q: Why was Pig created?
+A: To reduce complexity and development time of MapReduce.
+
+Q: What is Pig Latin?
+A: A data flow language used to express transformations.
+
+Q: What does Pig Latin compile into?
+A: MapReduce jobs
+
+Q: What is the biggest advantage of Pig?
+A: Less coding, faster development
+
+Q: What is the main philosophy of Pig?
+A: "Do less and accomplish more"
+
+Q: What type of language is Pig Latin?
+A: Procedural (data flow based)
+
+Q: What is a relation in Pig?
+A: A bag of tuples
+
+Q: What is a tuple?
+A: Ordered set of fields
+
+Q: What is a bag?
+A: Collection of tuples (can have duplicates)
+
+Q: What is a field?
+A: Atomic value
+
+Q: What is the default data type in Pig?
+A: bytearray
+
+Q: What are Pig execution modes?
+A: Local mode, Hadoop (MapReduce) mode
+
+Q: Which is default execution mode?
+A: Hadoop mode
+
+Q: What is Local mode used for?
+A: Development and testing
+
+Q: What is Grunt?
+A: Interactive shell for Pig
+
+Q: What triggers execution in Pig?
+A: DUMP or STORE
+
+Q: What is lazy evaluation in Pig?
+A: Pig does not execute until output is required.
+
+Q: Why is lazy evaluation important?
+A: Avoids unnecessary computation → better performance
+
+Q: What is LOAD?
+A: Loads data into a relation.
+
+Q: What is STORE?
+A: Saves data to storage.
+
+Q: What is DUMP?
+A: Displays output to console.
+
+Q: What is FILTER?
+A: Removes unwanted rows.
+
+Q: What is FOREACH GENERATE?
+A: Transforms each record.
+
+Q: What is GROUP BY?
+A: Groups records into bags.
+
+Q: What is ORDER BY?
+A: Sorts data.
+
+Q: What does LIMIT do?
+A: Restricts number of records.
+
+Q: What is DISTINCT?
+A: Removes duplicates.
+
+Q: What is JOIN?
+A: Combines relations (flat output).
+
+---
+
+NOTE 7: Apache Pig Advanced
+
+Q: What is COGROUP?
+A: Groups multiple relations by key.
+
+Q: Difference between JOIN and COGROUP?
+A: JOIN → flat output, COGROUP → nested output
+
+Q: What is SPLIT?
+A: Splits data into multiple relations.
+
+Q: What is TOKENIZE?
+A: Splits string into words.
+
+Q: What is FLATTEN?
+A: Removes nesting.
+
+Q: What is GROUP ALL?
+A: Groups all data into one record.
+
+Q: What does GROUP output contain?
+A: group key, bag of records
+
+Q: What is schema in Pig?
+A: Defines field names and types.
+
+Q: Can Pig work without schema?
+A: Yes (fields accessed by position)
+
+Q: How to reference fields by position?
+A: $0, $1, etc.
+
+Q: What happens if type casting fails?
+A: Value becomes NULL
+
+Q: How to detect corrupt data?
+A: Filter by NULL values.
+
+Q: How to separate good and bad data?
+A: SPLIT operator
+
+Q: How to detect missing fields?
+A: SIZE function
+
+Q: What is multiquery execution?
+A: Pig optimizes multiple outputs into one job.
+
+Q: What is UDF?
+A: User Defined Function
+
+Q: Why use UDF?
+A: To extend Pig functionality.
+
+Q: What languages support UDF?
+A: Java, Python, etc.
+
+Q: What is EvalFunc?
+A: Base class for evaluation UDFs.
+
+Q: What method must be implemented in EvalFunc?
+A: exec()
+
+Q: What does FilterFunc return?
+A: Boolean
+
+Q: What is DEFINE?
+A: Creates alias for UDF.
+
+Q: What is REGISTER?
+A: Loads external JAR file.
+
+Q: Where do UDFs run?
+A: On each mapper/reducer
+
+Q: Can UDF share state across nodes?
+A: No (parallel execution)
+
+Q: What is fragment replicate join?
+A: Map-side join using small dataset.
+
+Q: What is dynamic invoker?
+A: Call Java methods without writing UDF.
+
+Q: What is Piggybank?
+A: Repository of shared UDFs.
+
+Q: When should you use MapReduce instead of Pig?
+A: When: Need full control, High performance required
+
+Q: What is the most important concept in Pig?
+A: Lazy evaluation + high-level abstraction + UDF flexibility.`;
 
 // Load questions on page load
 function loadQuestions() {
@@ -648,6 +836,10 @@ function getNavigationHTML() {
                     Next →
                 </button>
             </div>
+            <div class="jump-to">
+                <input type="number" id="jumpInput" min="1" max="${questions.length}" placeholder="Go to Q#" />
+                <button class="btn-nav" onclick="goToSpecificQuestion()">Go</button>
+            </div>
             <div class="stats">${currentIndex + 1} / ${questions.length}</div>
         </div>
     `;
@@ -691,6 +883,17 @@ function goToQuestion(index) {
     currentIndex = index;
     renderQuestion();
     window.scrollTo(0, 0);
+}
+
+function goToSpecificQuestion() {
+    const input = document.getElementById('jumpInput');
+    const num = parseInt(input.value);
+    if (num >= 1 && num <= questions.length) {
+        goToQuestion(num - 1);
+        input.value = ''; // Clear input after jump
+    } else {
+        alert(`Please enter a valid question number between 1 and ${questions.length}`);
+    }
 }
 
 function toggleAnswer() {
