@@ -391,7 +391,7 @@ A: It can be disabled separately for mappers and reducers through job configurat
 
 ---
 
-NOTE 5: Apache Avro (Professor-Focused Exam Questions)
+NOTE 5: Apache Avro
 
 Q: What is Apache Avro?
 A: A cross-language data serialization system used in Hadoop.

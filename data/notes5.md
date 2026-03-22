@@ -1,5 +1,5 @@
 # Big Data Technologies - Note 5
-## Apache Avro (Professor-Focused Exam Questions)
+## Apache Avro
 
 
 1. What is Apache Avro?
