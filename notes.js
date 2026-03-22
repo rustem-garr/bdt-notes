@@ -387,7 +387,146 @@ Q: Is speculative execution enabled by default?
 A: Yes, speculative execution is enabled by default.
 
 Q: How can speculative execution be disabled?
-A: It can be disabled separately for mappers and reducers through job configuration options.`;
+A: It can be disabled separately for mappers and reducers through job configuration options.
+
+---
+
+NOTE 5: Apache Avro (Professor-Focused Exam Questions)
+
+Q: What is Apache Avro?
+A: A cross-language data serialization system used in Hadoop.
+
+Q: What is the main advantage of Avro over Writable?
+A: Avro is language-independent, while Writable is Java-only.
+
+Q: What is serialization?
+A: Conversion of objects into binary format for storage or transmission.
+
+Q: What is deserialization?
+A: Conversion of binary data back into objects.
+
+Q: Why is serialization required in distributed systems?
+A: Because data is transferred between nodes via RPC/network.
+
+Q: What makes Avro efficient?
+A: Compact binary format, No redundant metadata, Fast processing
+
+Q: What is the format of Avro schema?
+A: JSON (.avsc file)
+
+Q: What is stored in an Avro data file?
+A: Data, Schema (in metadata)
+
+Q: Why is Avro called self-describing?
+A: Because schema is embedded inside the file.
+
+Q: What is the extension of Avro data file?
+A: .avro
+
+Q: What is schema evolution?
+A: Ability to change schema while maintaining compatibility with old data.
+
+Q: Do reader and writer schemas need to match?
+A: No — Avro resolves differences automatically.
+
+Q: What must be provided when adding a new field?
+A: Default value (VERY IMPORTANT exam point)
+
+Q: What happens if no default value is provided?
+A: The schema becomes incompatible → error
+
+Q: What is schema resolution?
+A: Matching reader schema with writer schema during deserialization.
+
+Q: What happens to unknown fields in writer schema?
+A: They are ignored by the reader.
+
+Q: What happens if reader expects a missing field?
+A: It uses the default value.
+
+Q: Why is Avro suitable for big data?
+A: Because it is: Splittable, Compact, Efficient
+
+Q: What enables Avro files to be split?
+A: Block markers inside the file
+
+Q: Why is splitting important?
+A: It allows parallel processing in HDFS/MapReduce.
+
+Q: What does "language neutral" mean?
+A: Data can be read/written in multiple programming languages.
+
+Q: What is Avro-tools?
+A: A CLI tool for: Reading, Writing, Converting Avro files
+
+Q: Does Avro require code generation?
+A: No (optional, not required)
+
+Q: What is the advantage of not requiring code generation?
+A: Simpler usage, More flexible, Faster development
+
+Q: What is the key idea behind Avro design?
+A: Schema + Data together
+
+Q: What is a major disadvantage of Avro?
+A: Binary format is not human-readable.
+
+Q: Why is Avro better than JSON for big data?
+A: Smaller size, Faster processing, Schema enforcement
+
+Q: What are Avro primitive types?
+A: null, boolean, int, long, float, double, bytes, string
+
+Q: What are Avro complex types?
+A: record, array, map, enum, fixed, union
+
+Q: What is a record in Avro?
+A: A structure with named fields (like a class).
+
+Q: What is a union type?
+A: A field that can have multiple possible types.
+
+Q: What is the biggest exam trap about Avro?
+A: "Default value is required when adding new field"
+
+Q: What ensures backward compatibility?
+A: Providing default values for new fields.
+
+Q: What ensures forward compatibility?
+A: Reader schema ignoring unknown fields.
+
+Q: Can Avro change field types?
+A: No — must create a new field instead.
+
+Q: Why is Avro preferred in Hadoop ecosystem?
+A: Because it supports: Efficiency, Scalability, Interoperability
+
+Q: What happens if schema is not included with data?
+A: System cannot interpret binary data correctly.
+
+Q: What is the difference between Avro and Java serialization?
+A: Feature: Avro - Binary, Java Serialization - Binary; Schema: Avro - Explicit, Java Serialization - Embedded class; Language: Avro - Multi-language, Java Serialization - Java only; Efficiency: Avro - High, Java Serialization - Lower
+
+Q: Why is Avro good for distributed systems?
+A: Because it minimizes: Network cost, Storage size
+
+Q: What is the most important concept to remember?
+A: Schema evolution + default values + self-describing files
+
+Q: Why must a new field include a default value?
+A: To allow old data to be read with new schema.
+
+Q: What makes Avro files self-describing?
+A: Schema stored in metadata.
+
+Q: Why is Avro suitable for MapReduce?
+A: Because files are splittable and efficient.
+
+Q: Does Avro need schema at runtime?
+A: Yes — but it is embedded in file, so no external dependency.
+
+Q: Is Avro human-readable?
+A: No — binary format.`;
 
 // Load questions on page load
 function loadQuestions() {
